@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 import discord
 from discord.ext import commands
+from commands.tasks import setup_tasks
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -18,6 +19,8 @@ async def on_ready():
 @bot.command(name="ping")
 async def ping(ctx):
     await ctx.send("🏓 Pong! Estoy vivo.")
+
+setup_tasks(bot)
 
 if __name__ == "__main__":
     bot.run(TOKEN)
